@@ -2,10 +2,12 @@ import {
   Column,
   CreatedAt,
   DeletedAt,
+  HasMany,
   Model,
   PrimaryKey, Table,
   UpdatedAt
 } from 'sequelize-typescript'
+import { Inventory } from './Inventory';
 
 @Table({ tableName: 'restaurants' })
 export class Restaurant extends Model<Restaurant> {
@@ -18,6 +20,9 @@ export class Restaurant extends Model<Restaurant> {
 
   @Column
   address: string
+
+  @HasMany(() => Inventory)
+  inventory: Inventory[]
 
   @DeletedAt
   deleted_at: string
