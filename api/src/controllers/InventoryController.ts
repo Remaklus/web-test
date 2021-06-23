@@ -8,7 +8,6 @@ export class InventoryController {
   @Get('')
   private async get(req: Request, res: Response) {
     const inventory = await Inventory.findAll();
-    console.log('All Inventory:', JSON.stringify(inventory, null, 2))
     return res.send(inventory)
   }
 
@@ -32,7 +31,6 @@ export class InventoryController {
       updated_at: new Date()
     })
 
-    console.log('Created Inventory:', inventory.dataValues)
     return res.send({inventoryId: inventory.dataValues.id})
   }
 }
